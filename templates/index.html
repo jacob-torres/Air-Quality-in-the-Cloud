@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} -OpenAQ Dashboard</title>
+    </head>
+
+    <body>
+        <h1>Open Air Quality Data</h1>
+        <nav>
+            <ul>
+                <li><a href='home'>Home</a></li>
+                <li><a href='locations'>Locations</a></li>
+                <li><a href='https://docs.openaq.org/#/v2/'>OpenAQ API Docs</a></li>
+            </ul>
+        </nav>
+        <hr/>
+        {% block content %}{% endblock %}
+        <hr/>
+    </body>
+</html>
