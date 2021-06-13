@@ -1,16 +1,21 @@
 """OpenAQ Air Quality Dashboard with Flask."""
 import openaq
+import os
+from dotenv import load_dotenv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+# Access environment variables
+db_config = os.getenv('DB_CONFIG')
+
 APP = Flask(__name__)
-APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+APP.config['SQLALCHEMY_DATABASE_URI'] = db_config
 DB = SQLAlchemy(APP)
 
 
 class Record(DB.Model):
     id = DB.Column(DB.Integer, primary_key=True)
-    datetime = DB.Column(DB.String(25))
+    datetime = DB.Column(DB.String(25), nullable=False)
     value = DB.Column(DB.Float, nullable=False)
 
     def __repr__(self):
